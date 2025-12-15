@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador de Teste Comportamental DISC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #002a47;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #333;
+        }
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f0f4f8;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+            color: #003a64;
+        }
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; 
+        }
+        button {
+            background: #ff7a00;
+            color: #fff;
+            border: none;
+            padding: 14px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block; 
+        }
+        button:hover {
+            background: #ef4e23;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            background: #eaf2f8;
+            display: none;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            color: #fff;
+            font-weight: bold;
+            margin-right: 10px;
+            text-transform: uppercase;
+        }
+        /* Cores dos perfis DISC */
+        .D { background:#ef4e23; }
+        .I { background:#ff7a00; }
+        .S { background:#004e8f; }
+        .C { background:#002a47; }
+        
+        .chart-bar-container {
+            background:#ddd;
+            border-radius:6px;
+            overflow:hidden;
+            margin-bottom:10px;
+        }
+        .chart-bar {
+            padding: 6px;
+            color: #fff;
+            font-weight: bold;
+            text-align: right;
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Teste Comportamental DISC</h1>
+        <p>Este questionário simula o modelo DISC e tem como objetivo identificar o perfil comportamental predominante do candidato.</p>
+
+        <form id="discForm">
+
+            <div class="question">
+                <h3>Identificação do colaborador</h3>
+                <label>Nome completo:
+                    <input type="text" name="candidate" id="candidate" required>
+                </label>
+                 <label style="margin-top: 15px;">Setor/Função:
+                    <input type="text" name="role" id="role" required>
+                </label>
+            </div>
+
+            <div class="question">
+                <h3>1. Em um ambiente de trabalho, você tende a:</h3>
+                <label><input type="radio" name="q1" value="D" required> Tomar decisões rápidas e assumir o controle</label>
+                <label><input type="radio" name="q1" value="I"> Motivar pessoas e gerar entusiasmo</label>
+                <label><input type="radio" name="q1" value="S"> Manter a harmonia e apoiar o time</label>
+                <label><input type="radio" name="q1" value="C"> Analisar dados antes de decidir</label>
+            </div>
+
+            <div class="question">
+                <h3>2. Quando surge um problema, você prefere:</h3>
+                <label><input type="radio" name="q2" value="D" required> Resolver rapidamente, mesmo com riscos</label>
+                <label><input type="radio" name="q2" value="I"> Conversar com pessoas para buscar ideias</label>
+                <label><input type="radio" name="q2" value="S"> Avaliar como isso afeta todos</label>
+                <label><input type="radio" name="q2" value="C"> Investigar causas e seguir processos</label>
+            </div>
+
+            <div class="question">
+                <h3>3. Você se sente mais confortável quando:</h3>
+                <label><input type="radio" name="q3" value="D" required> Está liderando e decidindo</label>
+                <label><input type="radio" name="q3" value="I"> Está interagindo e persuadindo</label>
+                <label><input type="radio" name="q3" value="S"> Existe estabilidade e cooperação</label>
+                <label><input type="radio" name="q3" value="C"> Há regras claras e organização</label>
+            </div>
+
+            <div class="question">
+                <h3>4. Em relação a metas, você:</h3>
+                <label><input type="radio" name="q4" value="D" required> Foca em resultados e desafios</label>
+                <label><input type="radio" name="q4" value="I"> Gosta de reconhecimento e feedback</label>
+                <label><input type="radio" name="q4" value="S"> Prefere metas consistentes e realistas</label>
+                <label><input type="radio" name="q4" value="C"> Busca precisão e qualidade</label>
+            </div>
+
+            <div class="question">
+                <h3>5. Sob pressão, você normalmente:</h3>
+                <label><input type="radio" name="q5" value="D" required> Age de forma firme e direta</label>
+                <label><input type="radio" name="q5" value="I"> Tenta manter o clima positivo</label>
+                <label><input type="radio" name="q5" value="S"> Mantém a calma e ajuda os outros</label>
+                <label><input type="radio" name="q5" value="C"> Segue métodos e evita erros</label>
+            </div>
+
+            <div class="question">
+                <h3>6. Em reuniões, você costuma:</h3>
+                <label><input type="radio" name="q6" value="D" required> Conduzir a conversa e direcionar decisões</label>
+                <label><input type="radio" name="q6" value="I"> Participar ativamente e estimular ideias</label>
+                <label><input type="radio" name="q6" value="S"> Ouvir com atenção e apoiar consensos</label>
+                <label><input type="radio" name="q6" value="C"> Analisar informações antes de opinar</label>
+            </div>
+
+            <div class="question">
+                <h3>7. Seu ritmo de trabalho é mais:</h3>
+                <label><input type="radio" name="q7" value="D" required> Rápido e focado em resultados</label>
+                <label><input type="radio" name="q7" value="I"> Dinâmico e flexível</label>
+                <label><input type="radio" name="q7" value="S"> Constante e previsível</label>
+                <label><input type="radio" name="q7" value="C"> Cuidadoso e preciso</label>
+            </div>
+
+            <div class="question">
+                <h3>8. Ao receber feedback, você prefere que seja:</h3>
+                <label><input type="radio" name="q8" value="D" required> Direto e objetivo</label>
+                <label><input type="radio" name="q8" value="I"> Motivador e encorajador</label>
+                <label><input type="radio" name="q8" value="S"> Respeitoso e construtivo</label>
+                <label><input type="radio" name="q8" value="C"> Baseado em dados e fatos</label>
+            </div>
+
+            <div class="question">
+                <h3>9. Quando mudanças acontecem, você:</h3>
+                <label><input type="radio" name="q9" value="D" required> Se adapta rapidamente e lidera</label>
+                <label><input type="radio" name="q9" value="I"> Vê oportunidades e motiva pessoas</label>
+                <label><input type="radio" name="q9" value="S"> Precisa de tempo para se ajustar</label>
+                <label><input type="radio" name="q9" value="C"> Analisa impactos antes de agir</label>
+            </div>
+
+            <div class="question">
+                <h3>10. Em tarefas complexas, você:</h3>
+                <label><input type="radio" name="q10" value="D" required> Assume a responsabilidade e decide</label>
+                <label><input type="radio" name="q10" value="I"> Trabalha em grupo para trocar ideias</label>
+                <label><input type="radio" name="q10" value="S"> Garante que todos estejam alinhados</label>
+                <label><input type="radio" name="q10" value="C"> Segue padrões e verifica detalhes</label>
+            </div>
+
+            <div class="question">
+                <h3>11. Você se destaca mais por:</h3>
+                <label><input type="radio" name="q11" value="D" required> Determinação e foco</label>
+                <label><input type="radio" name="q11" value="I"> Comunicação e influência</label>
+                <label><input type="radio" name="q11" value="S" required> Lealdade e cooperação</label>
+                <label><input type="radio" name="q11" value="C"> Organização e precisão</label>
+            </div>
+
+            <div class="question">
+                <h3>12. Em um time ideal, você prefere:</h3>
+                <label><input type="radio" name="q12" value="D" required> Ter autonomia para decidir</label>
+                <label><input type="radio" name="q12" value="I"> Um ambiente animado e colaborativo</label>
+                <label><input type="radio" name="q12" value="S"> Relações estáveis e confiáveis</label>
+                <label><input type="radio" name="q12" value="C"> Processos claros e bem definidos</label>
+            </div>
+
+            <div class="question">
+                <h3>13. Quando precisa cumprir prazos apertados, você:</h3>
+                <label><input type="radio" name="q13" value="D" required> Pressiona para garantir o resultado</label>
+                <label><input type="radio" name="q13" value="I"> Engaja o time para manter o ritmo</label>
+                <label><input type="radio" name="q13" value="S"> Mantém constância e organização</label>
+                <label><input type="radio" name="q13" value="C"> Planeja para evitar retrabalho</label>
+            </div>
+
+            <div class="question">
+                <h3>14. Ao lidar com conflitos, você tende a:</h3>
+                <label><input type="radio" name="q14" value="D" required> Enfrentar diretamente a situação</label>
+                <label><input type="radio" name="q14" value="I"> Conversar e tentar conciliar</label>
+                <label><input type="radio" name="q14" value="S"> Evitar conflitos e buscar harmonia</label>
+                <label><input type="radio" name="q14" value="C"> Analisar fatos antes de agir</label>
+            </div>
+
+            <div class="question">
+                <h3>15. No dia a dia profissional, você valoriza mais:</h3>
+                <label><input type="radio" name="q15" value="D" required> Desafios e autonomia</label>
+                <label><input type="radio" name="q15" value="I"> Reconhecimento e interação</label>
+                <label><input type="radio" name="q15" value="S"> Segurança e estabilidade</label>
+                <label><input type="radio" name="q15" value="C"> Clareza, regras e qualidade</label>
+            </div>
+
+            <button type="submit">Ver Resultado</button>
+        </form>
+
+        <div class="result" id="result">
+            <h2>Resultado do Perfil DISC</h2>
+            <p><strong>Candidato:</strong> <span id="candidateName"></span></p>
+            <p><strong>Vaga/Função:</strong> <span id="candidateRole"></span></p>
+            <hr>
+            <h3>🧠 Perfil Principal + Secundário</h3>
+            <p id="mainProfile"></p>
+            <p id="description"></p>
+
+            <h3>📊 Percentual por Perfil</h3>
+            <p id="percentHeader"></p>
+            <div id="chart"></div>
+            
+            <hr>
+            <h3>🏢 Relatório Personalizado (DFL)</h3>
+            <p id="dflReport"></p>
+
+            <button type="button" onclick="generatePDF()">Gerar PDF do Resultado</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+        // Mapeamento dos perfis DISC
+        const profilesData = {
+            D: {
+                name: 'Dominância',
+                desc: (percent) => `O perfil de **Dominância (D)**, com ${percent.D}%, demonstra foco em resultados, decisões rápidas, assertividade e liderança. É um perfil orientado à ação e ao desafio.`,
+                dfl: "Na DFL, o perfil Dominante (D) é essencial para impulsionar a concretização de projetos e a tomada de decisões estratégicas em momentos cruciais. Sua energia e foco em metas são valiosos para a liderança e para alcançar resultados ambiciosos.",
+            },
+            I: {
+                name: 'Influência',
+                desc: (percent) => `O perfil de **Influência (I)**, com ${percent.I}%, é comunicativo, persuasivo e motivador. Forte em relacionamento interpessoal e na geração de entusiasmo.`,
+                dfl: "Na DFL, o perfil Influente (I) contribui significativamente para o clima organizacional positivo e para o engajamento das equipes. Sua capacidade de comunicação e persuasão é crucial para negociações e para construir um ambiente colaborativo.",
+            },
+            S: {
+                name: 'Estabilidade',
+                desc: (percent) => `O perfil de **Estabilidade (S)**, com ${percent.S}%, é cooperativo, paciente e confiável. Ideal para trabalho em equipe, rotinas operacionais e suporte, valorizando a harmonia.`,
+                dfl: "Na DFL, o perfil Estável (S) é a base para a consistência e o apoio dentro das equipes. Sua lealdade, paciência e habilidade em manter a harmonia são fundamentais para a execução de processos e para garantir um ambiente de trabalho estável e confiável.",
+            },
+            C: {
+                name: 'Conformidade',
+                desc: (percent) => `O perfil de **Conformidade (C)**, com ${percent.C}%, é analítico, detalhista e orientado a processos. Busca precisão, qualidade e segue regras claras.`,
+                dfl: "Na DFL, o perfil Consciente (C) assegura a precisão e a alta qualidade nos detalhes. Seu foco em processos, dados e conformidade é indispensável para evitar erros, garantir a excelência técnica e manter os padrões da empresa.",
+            }
+        };
+
+        // Função de cálculo e exibição do resultado
+        document.getElementById('discForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 1. Coleta e pontuação
+            const scores = { D: 0, I: 0, S: 0, C: 0 };
+            const formData = new FormData(this);
+            const candidate = document.getElementById('candidate').value;
+            const role = document.getElementById('role').value;
+            const totalQuestions = 15; // Número fixo de perguntas
+
+            // Itera sobre as respostas (keys q1, q2, ..., q15)
+            for (let i = 1; i <= totalQuestions; i++) {
+                const value = formData.get(`q${i}`);
+                if (value && scores.hasOwnProperty(value)) {
+                    scores[value]++;
+                }
+            }
+
+            // 2. Cálculo de porcentagens
+            const percentages = {};
+            const profileKeys = Object.keys(scores);
+            let percentHeader = '';
+
+            // Encontra perfis primário e secundário
+            profileKeys.sort((a, b) => scores[b] - scores[a]);
+            const dominant = profileKeys[0];
+            const secondary = profileKeys[1];
+            
+            // Calcula e formata porcentagens
+            profileKeys.forEach(key => {
+                const percent = Math.round((scores[key] / totalQuestions) * 100);
+                percentages[key] = percent;
+                percentHeader += `${key} ${percent}% | `;
+            });
+
+            // Remove o último ' | '
+            percentHeader = percentHeader.slice(0, -3);
+
+            // 3. Exibição dos resultados
+            document.getElementById('candidateName').innerText = candidate;
+            document.getElementById('candidateRole').innerText = role;
+            document.getElementById('percentHeader').innerText = percentHeader;
+
+            // Perfil primário + secundário
+            document.getElementById('mainProfile').innerHTML = `
+                <p>Perfil Comportamental: <span class="badge ${dominant}">${profilesData[dominant].name}</span> + 
+                <span class="badge ${secondary}">${profilesData[secondary].name}</span></p>
+            `;
+
+            // Descrição do perfil primário
+            document.getElementById('description').innerText = profilesData[dominant].desc(percentages);
+
+            // Relatório personalizado para a DFL (do perfil primário)
+            document.getElementById('dflReport').innerText = profilesData[dominant].dfl;
+
+            // Gráfico de Barras
+            const chart = document.getElementById('chart');
+            chart.innerHTML = '';
+            for (let key in scores) {
+                const percent = percentages[key];
+                const profile = profilesData[key];
+                chart.innerHTML += `
+                    <p><strong>${key} - ${profile.name}:</strong> ${percent}%</p>
+                    <div class="chart-bar-container">
+                        <div class="chart-bar ${key}" style="width:${percent}%;">${percent}%</div>
+                    </div>`;
+            }
+
+            document.getElementById('result').style.display = 'block';
+        });
+
+        /**
+         * FUNÇÃO CORRIGIDA: Gera um arquivo PDF a partir do conteúdo do div 'result'.
+         * Utiliza html2canvas e jsPDF.
+         */
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const resultElement = document.getElementById('result');
+            const candidateName = document.getElementById('candidateName').innerText;
+            
+            // 1. Oculta o botão "Gerar PDF" antes de capturar o HTML (para não aparecer no PDF)
+            const pdfButton = resultElement.querySelector('button');
+            pdfButton.style.display = 'none';
+
+            // 2. Captura o conteúdo do div 'result' como uma imagem
+            html2canvas(resultElement, {
+                scale: 2, // Aumenta a qualidade da imagem
+                useCORS: true // Necessário se houver imagens externas
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                
+                // 3. Cria um novo documento PDF
+                const pdf = new jsPDF('p', 'mm', 'a4'); // 'p' = portrait, 'mm' = milímetros, 'a4' = tamanho
+                
+                // Largura e altura do A4 em MM
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                
+                // Calcula a proporção da imagem no PDF
+                const imgProps = pdf.getImageProperties(imgData);
+                const imgHeight = (imgProps.height * pdfWidth) / imgProps.width;
+                
+                // 4. Adiciona a imagem ao PDF (ajusta o tamanho para caber na página, caso seja maior)
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, imgHeight);
+
+                // 5. Salva o arquivo com o nome personalizado
+                pdf.save(`Relatorio_DISC_${candidateName.replace(/\s/g, '_')}.pdf`);
+
+                // 6. Reexibe o botão "Gerar PDF" (limpeza)
+                pdfButton.style.display = 'block'; 
+            }).catch(error => {
+                console.error("Erro ao gerar PDF:", error);
+                alert("Ocorreu um erro ao gerar o PDF. Verifique o console para mais detalhes.");
+                // Em caso de erro, garante que o botão seja reexibido
+                pdfButton.style.display = 'block'; 
+            });
+        }
+    </script>
+</body>
+</html>
