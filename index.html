@@ -134,30 +134,141 @@ footer {
 <!-- EXEMPLO DE PERGUNTAS -->
 <!-- Você pode manter suas perguntas atuais -->
 
-<div class="question">
-<h3>1. Em um ambiente de trabalho você tende a:</h3>
-<label><input type="radio" name="q1" value="D" required> Tomar decisões rápidas</label>
-<label><input type="radio" name="q1" value="I"> Motivar pessoas</label>
-<label><input type="radio" name="q1" value="S"> Apoiar o time</label>
-<label><input type="radio" name="q1" value="C"> Analisar dados</label>
-</div>
+<div class="container">
+        <h1>Teste Comportamental DISC</h1>
+        <p>Este questionário simula o modelo DISC e tem como objetivo identificar o perfil comportamental predominante do candidato.</p>
 
-<div class="question">
-<h3>2. Quando surge um problema você:</h3>
-<label><input type="radio" name="q2" value="D" required> Resolve rápido</label>
-<label><input type="radio" name="q2" value="I"> Conversa com o time</label>
-<label><input type="radio" name="q2" value="S"> Avalia impactos</label>
-<label><input type="radio" name="q2" value="C"> Analisa causas</label>
-</div>
+        <form id="discForm">
 
-<div class="question">
-<h3>3. Você se sente melhor quando:</h3>
-<label><input type="radio" name="q3" value="D" required> Lidera</label>
-<label><input type="radio" name="q3" value="I"> Interage</label>
-<label><input type="radio" name="q3" value="S"> Há estabilidade</label>
-<label><input type="radio" name="q3" value="C"> Há organização</label>
-</div>
+            <div class="question">
+                <h3>Identificação do colaborador</h3>
+                <label>Nome completo:
+                    <input type="text" name="candidate" id="candidate" required>
+                </label>
+                 <label style="margin-top: 15px;">Setor/Função:
+                    <input type="text" name="role" id="role" required>
+                </label>
+            </div>
 
+            <div class="question">
+                <h3>1. Em um ambiente de trabalho, você tende a:</h3>
+                <label><input type="radio" name="q1" value="D" required> Tomar decisões rápidas e assumir o controle</label>
+                <label><input type="radio" name="q1" value="I"> Motivar pessoas e gerar entusiasmo</label>
+                <label><input type="radio" name="q1" value="S"> Manter a harmonia e apoiar o time</label>
+                <label><input type="radio" name="q1" value="C"> Analisar dados antes de decidir</label>
+            </div>
+
+            <div class="question">
+                <h3>2. Quando surge um problema, você prefere:</h3>
+                <label><input type="radio" name="q2" value="D" required> Resolver rapidamente, mesmo com riscos</label>
+                <label><input type="radio" name="q2" value="I"> Conversar com pessoas para buscar ideias</label>
+                <label><input type="radio" name="q2" value="S"> Avaliar como isso afeta todos</label>
+                <label><input type="radio" name="q2" value="C"> Investigar causas e seguir processos</label>
+            </div>
+
+            <div class="question">
+                <h3>3. Você se sente mais confortável quando:</h3>
+                <label><input type="radio" name="q3" value="D" required> Está liderando e decidindo</label>
+                <label><input type="radio" name="q3" value="I"> Está interagindo e persuadindo</label>
+                <label><input type="radio" name="q3" value="S"> Existe estabilidade e cooperação</label>
+                <label><input type="radio" name="q3" value="C"> Há regras claras e organização</label>
+            </div>
+
+            <div class="question">
+                <h3>4. Em relação a metas, você:</h3>
+                <label><input type="radio" name="q4" value="D" required> Foca em resultados e desafios</label>
+                <label><input type="radio" name="q4" value="I"> Gosta de reconhecimento e feedback</label>
+                <label><input type="radio" name="q4" value="S"> Prefere metas consistentes e realistas</label>
+                <label><input type="radio" name="q4" value="C"> Busca precisão e qualidade</label>
+            </div>
+
+            <div class="question">
+                <h3>5. Sob pressão, você normalmente:</h3>
+                <label><input type="radio" name="q5" value="D" required> Age de forma firme e direta</label>
+                <label><input type="radio" name="q5" value="I"> Tenta manter o clima positivo</label>
+                <label><input type="radio" name="q5" value="S"> Mantém a calma e ajuda os outros</label>
+                <label><input type="radio" name="q5" value="C"> Segue métodos e evita erros</label>
+            </div>
+
+            <div class="question">
+                <h3>6. Em reuniões, você costuma:</h3>
+                <label><input type="radio" name="q6" value="D" required> Conduzir a conversa e direcionar decisões</label>
+                <label><input type="radio" name="q6" value="I"> Participar ativamente e estimular ideias</label>
+                <label><input type="radio" name="q6" value="S"> Ouvir com atenção e apoiar consensos</label>
+                <label><input type="radio" name="q6" value="C"> Analisar informações antes de opinar</label>
+            </div>
+
+            <div class="question">
+                <h3>7. Seu ritmo de trabalho é mais:</h3>
+                <label><input type="radio" name="q7" value="D" required> Rápido e focado em resultados</label>
+                <label><input type="radio" name="q7" value="I"> Dinâmico e flexível</label>
+                <label><input type="radio" name="q7" value="S"> Constante e previsível</label>
+                <label><input type="radio" name="q7" value="C"> Cuidadoso e preciso</label>
+            </div>
+
+            <div class="question">
+                <h3>8. Ao receber feedback, você prefere que seja:</h3>
+                <label><input type="radio" name="q8" value="D" required> Direto e objetivo</label>
+                <label><input type="radio" name="q8" value="I"> Motivador e encorajador</label>
+                <label><input type="radio" name="q8" value="S"> Respeitoso e construtivo</label>
+                <label><input type="radio" name="q8" value="C"> Baseado em dados e fatos</label>
+            </div>
+
+            <div class="question">
+                <h3>9. Quando mudanças acontecem, você:</h3>
+                <label><input type="radio" name="q9" value="D" required> Se adapta rapidamente e lidera</label>
+                <label><input type="radio" name="q9" value="I"> Vê oportunidades e motiva pessoas</label>
+                <label><input type="radio" name="q9" value="S"> Precisa de tempo para se ajustar</label>
+                <label><input type="radio" name="q9" value="C"> Analisa impactos antes de agir</label>
+            </div>
+
+            <div class="question">
+                <h3>10. Em tarefas complexas, você:</h3>
+                <label><input type="radio" name="q10" value="D" required> Assume a responsabilidade e decide</label>
+                <label><input type="radio" name="q10" value="I"> Trabalha em grupo para trocar ideias</label>
+                <label><input type="radio" name="q10" value="S"> Garante que todos estejam alinhados</label>
+                <label><input type="radio" name="q10" value="C"> Segue padrões e verifica detalhes</label>
+            </div>
+
+            <div class="question">
+                <h3>11. Você se destaca mais por:</h3>
+                <label><input type="radio" name="q11" value="D" required> Determinação e foco</label>
+                <label><input type="radio" name="q11" value="I"> Comunicação e influência</label>
+                <label><input type="radio" name="q11" value="S" required> Lealdade e cooperação</label>
+                <label><input type="radio" name="q11" value="C"> Organização e precisão</label>
+            </div>
+
+            <div class="question">
+                <h3>12. Em um time ideal, você prefere:</h3>
+                <label><input type="radio" name="q12" value="D" required> Ter autonomia para decidir</label>
+                <label><input type="radio" name="q12" value="I"> Um ambiente animado e colaborativo</label>
+                <label><input type="radio" name="q12" value="S"> Relações estáveis e confiáveis</label>
+                <label><input type="radio" name="q12" value="C"> Processos claros e bem definidos</label>
+            </div>
+
+            <div class="question">
+                <h3>13. Quando precisa cumprir prazos apertados, você:</h3>
+                <label><input type="radio" name="q13" value="D" required> Pressiona para garantir o resultado</label>
+                <label><input type="radio" name="q13" value="I"> Engaja o time para manter o ritmo</label>
+                <label><input type="radio" name="q13" value="S"> Mantém constância e organização</label>
+                <label><input type="radio" name="q13" value="C"> Planeja para evitar retrabalho</label>
+            </div>
+
+            <div class="question">
+                <h3>14. Ao lidar com conflitos, você tende a:</h3>
+                <label><input type="radio" name="q14" value="D" required> Enfrentar diretamente a situação</label>
+                <label><input type="radio" name="q14" value="I"> Conversar e tentar conciliar</label>
+                <label><input type="radio" name="q14" value="S"> Evitar conflitos e buscar harmonia</label>
+                <label><input type="radio" name="q14" value="C"> Analisar fatos antes de agir</label>
+            </div>
+
+            <div class="question">
+                <h3>15. No dia a dia profissional, você valoriza mais:</h3>
+                <label><input type="radio" name="q15" value="D" required> Desafios e autonomia</label>
+                <label><input type="radio" name="q15" value="I"> Reconhecimento e interação</label>
+                <label><input type="radio" name="q15" value="S"> Segurança e estabilidade</label>
+                <label><input type="radio" name="q15" value="C"> Clareza, regras e qualidade</label>
+            </div>
 <!-- Adicione suas demais perguntas até q15 -->
 
 <button type="submit">Ver Resultado</button>
